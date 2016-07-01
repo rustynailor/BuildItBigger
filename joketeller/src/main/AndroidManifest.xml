@@ -7,8 +7,8 @@
         android:label="@string/app_name"
         android:supportsRtl="true">
         <activity
-            android:name=".TellJoke"
-            android:label="@string/title_activity_tell_joke"
+            android:name=".TellAJoke"
+            android:label="@string/title_activity_tell_ajoke"
             android:theme="@style/AppTheme.NoActionBar">
         </activity>
     </application>
