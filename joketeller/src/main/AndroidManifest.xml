@@ -5,7 +5,8 @@
     <application
         android:allowBackup="true"
         android:label="@string/app_name"
-        android:supportsRtl="true">
+        android:supportsRtl="true"
+        android:name="android.support.multidex.MultiDexApplication">
         <activity
             android:name=".TellAJoke"
             android:label="@string/title_activity_tell_ajoke"
