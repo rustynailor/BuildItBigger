@@ -21,6 +21,9 @@ public class FetchJokeTask extends AsyncTask<Context,Void,String> {
     private static MyApi myApiService = null;
     private Context context;
 
+    //used to pass joke back to calling activity
+    public JokeResponse delegate = null;
+
     @Override
     protected String doInBackground(Context... params) {
         if(myApiService == null) {  // Only do this once
@@ -52,7 +55,7 @@ public class FetchJokeTask extends AsyncTask<Context,Void,String> {
 
     @Override
     protected void onPostExecute(String result) {
-        Toast.makeText(context, result, Toast.LENGTH_LONG).show();
+        delegate.processFinish(result);
     }
 
 }

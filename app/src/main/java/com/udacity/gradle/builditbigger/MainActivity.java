@@ -12,7 +12,7 @@ import android.widget.Toast;
 import com.rantmedia.joketeller.TellAJoke;
 
 
-public class MainActivity extends ActionBarActivity {
+public class MainActivity extends ActionBarActivity implements JokeResponse{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,17 +44,18 @@ public class MainActivity extends ActionBarActivity {
     }
 
     public void tellJoke(View view){
-       //get Joke
-        //JokeFactory jokeFactory = new JokeFactory();
-        //String joke = jokeFactory.getJoke();
-
-        //launch activity
-        Intent sendIntent = new Intent(getApplicationContext(), TellAJoke.class);
-        sendIntent.putExtra("joke", "joke");
-        //startActivity(sendIntent);
-
-        new FetchJokeTask().execute(this);
+        FetchJokeTask fetchJokeTask =new FetchJokeTask();
+        fetchJokeTask.delegate = this;
+        //execute the async task
+        fetchJokeTask.execute(this);
     }
 
-
+    //called by asyntask in onPostExecute
+    @Override
+    public void processFinish(String output) {
+        //launch activity
+        Intent sendIntent = new Intent(getApplicationContext(), TellAJoke.class);
+        sendIntent.putExtra("joke", output);
+        startActivity(sendIntent);
+    }
 }
