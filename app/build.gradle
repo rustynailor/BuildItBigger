@@ -19,10 +19,20 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    productFlavors{
+        free{
+            applicationId "com.udacity.gradle.builditbigger.free"
+        }
+        paid{
+            applicationId "com.udacity.gradle.builditbigger.paid"
+        }
+    }
+
     dexOptions {
         incremental true
         javaMaxHeapSize "4g"
     }
+
 }
 
 dependencies {
@@ -30,7 +40,7 @@ dependencies {
     // Added for AdMob
     compile project(':joketeller')
     compile 'com.android.support:appcompat-v7:24.0.0'
-    compile 'com.google.android.gms:play-services-ads:9.2.0'
+    freeCompile 'com.google.android.gms:play-services-ads:9.2.0'
     compile project(path: ':jokebackend', configuration: 'android-endpoints')
     compile 'com.android.support:multidex:1.0.1'
 }

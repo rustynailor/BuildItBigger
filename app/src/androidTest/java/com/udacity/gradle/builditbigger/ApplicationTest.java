@@ -4,9 +4,6 @@ import android.app.Application;
 import android.test.ApplicationTestCase;
 import android.test.suitebuilder.annotation.MediumTest;
 
-import com.udacity.gradle.builditbigger.FetchJokeTask;
-import com.udacity.gradle.builditbigger.JokeResponse;
-
 /**
  * <a href="http://d.android.com/tools/testing/testing_android.html">Testing Fundamentals</a>
  */
