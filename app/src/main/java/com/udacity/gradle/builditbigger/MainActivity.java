@@ -6,6 +6,7 @@ import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
 
 import com.rantmedia.joketeller.TellAJoke;
 import com.udacity.gradle.builditbigger.FetchJokeTask;
@@ -54,11 +55,17 @@ public class MainActivity extends ActionBarActivity implements JokeResponse{
     //called by asyntask in onPostExecute
     @Override
     public void processFinish(String output) {
-        //launch activity
+        //launch activity if we have a joke
         if(output != null) {
             Intent sendIntent = new Intent(getApplicationContext(), TellAJoke.class);
             sendIntent.putExtra("joke", output);
             startActivity(sendIntent);
+        } //if not, show error
+        else {;
+            CharSequence text = getString(R.string.joke_error);
+            int duration = Toast.LENGTH_SHORT;
+            Toast toast = Toast.makeText(this, text, duration);
+            toast.show();
         }
     }
 }
