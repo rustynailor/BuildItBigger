@@ -25,7 +25,6 @@ public class TellAJoke extends AppCompatActivity {
             jokeView.setText(joke);
         }
 
-
     }
 
 }

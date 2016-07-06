@@ -61,7 +61,7 @@ public class MainActivity extends ActionBarActivity implements JokeResponse{
             sendIntent.putExtra("joke", output);
             startActivity(sendIntent);
         } //if not, show error
-        else {;
+        else {
             CharSequence text = getString(R.string.joke_error);
             int duration = Toast.LENGTH_SHORT;
             Toast toast = Toast.makeText(this, text, duration);
