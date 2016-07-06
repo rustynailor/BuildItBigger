@@ -2,6 +2,7 @@ package com.udacity.gradle.builditbigger;
 
 import android.content.Context;
 import android.os.AsyncTask;
+import android.util.Log;
 import android.widget.Toast;
 
 import com.google.api.client.extensions.android.http.AndroidHttp;
@@ -20,6 +21,8 @@ public class FetchJokeTask extends AsyncTask<Context,Void,String> {
 
     private static MyApi myApiService = null;
     private Context context;
+
+    private String LOG_TAG = "FetchJokeTask";
 
     //used to pass joke back to calling activity
     public JokeResponse delegate = null;
@@ -49,7 +52,8 @@ public class FetchJokeTask extends AsyncTask<Context,Void,String> {
         try {
             return myApiService.getJoke().execute().getJoke();
         } catch (IOException e) {
-            return e.getMessage();
+            Log.e(LOG_TAG,context.getString(R.string.joke_error_message) + e.getLocalizedMessage());
+            return null;
         }
     }
 

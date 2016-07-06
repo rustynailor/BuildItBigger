@@ -1,15 +1,16 @@
 package com.udacity.gradle.builditbigger;
 
-import android.content.Context;
 import android.content.Intent;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Toast;
 
 import com.rantmedia.joketeller.TellAJoke;
+import com.udacity.gradle.builditbigger.FetchJokeTask;
+import com.udacity.gradle.builditbigger.JokeResponse;
+import com.udacity.gradle.builditbigger.R;
 
 
 public class MainActivity extends ActionBarActivity implements JokeResponse{
@@ -54,8 +55,10 @@ public class MainActivity extends ActionBarActivity implements JokeResponse{
     @Override
     public void processFinish(String output) {
         //launch activity
-        Intent sendIntent = new Intent(getApplicationContext(), TellAJoke.class);
-        sendIntent.putExtra("joke", output);
-        startActivity(sendIntent);
+        if(output != null) {
+            Intent sendIntent = new Intent(getApplicationContext(), TellAJoke.class);
+            sendIntent.putExtra("joke", output);
+            startActivity(sendIntent);
+        }
     }
 }

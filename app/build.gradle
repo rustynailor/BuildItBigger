@@ -10,8 +10,7 @@ android {
         targetSdkVersion 23
         versionCode 1
         versionName "1.0"
-        multiDexEnabled true
-        testInstrumentationRunner "com.android.test.runner.MultiDexTestRunner"
+
     }
     buildTypes {
         release {
@@ -28,11 +27,6 @@ android {
         }
     }
 
-    dexOptions {
-        incremental true
-        javaMaxHeapSize "4g"
-    }
-
 }
 
 dependencies {
@@ -40,7 +34,7 @@ dependencies {
     // Added for AdMob
     compile project(':joketeller')
     compile 'com.android.support:appcompat-v7:24.0.0'
-    freeCompile 'com.google.android.gms:play-services-ads:9.2.0'
+    freeCompile 'com.google.android.gms:play-services-ads:9.0.2'
     compile project(path: ':jokebackend', configuration: 'android-endpoints')
     compile 'com.android.support:multidex:1.0.1'
 }
